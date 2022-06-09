@@ -1,0 +1,69 @@
+---
+title: "CLT"
+author: "Trevor Ragazzo"
+date: '2022-06-08'
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(lattice)
+```
+
+```{r}
+Homers_data <- read.csv(file="Homers_data.csv")
+my1000 <- sample(Homers_data$kkardashtemp ,size = 1000, replace=T)
+densityplot(my1000,main="original data")
+Originalmean<-mean(my1000)
+OriginalSD<-sd(my1000)
+```
+
+Describe the resulting plot -  is it unimodal?  How many peaks does it have?  Are all the peaks the same size? 
+
+This graph is not unimodal, this is because it has two different peaks instead of one. I would describe this as bimodal. Both peaks seem to be the same size. Also the mean of the original data is `r Originalmean`and the standard deviation is `r OriginalSD `
+
+
+
+
+
+Now take 2 random samples of 1000 points of the kkardashtemp variable and form 1000 points of their averages,
+
+```{r}
+numb = 2
+Hdata   <- sample(Homers_data$kkardashtemp ,size = numb*1000, replace=T)
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 2")
+Sample2mean<-mean(x.avg)
+Sample2sd<-sd(x.avg)
+```
+
+This graph is also not a unimodal, this is because it has 3 peaks instead of one, this graph is called trimodal. All peaks seem to have different sizes, leftmost peak is smallest, middle peak is the largest, and rightmost is the second largest. This shows an average mean of `r Sample2mean` and a standard deviation of `r Sample2sd`
+
+```{r}
+numb = 4
+Hdata   <- sample(Homers_data$kkardashtemp ,size = numb*1000, replace=T)
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 4")
+Sample4mean<-mean(x.avg)
+Sample4sd<-sd(x.avg)
+```
+
+This graph is a sample size of 4, this graph is not unimodal. It has five peaks and all of them are different than another, no peaks are the same size. The average mean of this is `r Sample4mean`and the standard deviation is `r Sample4sd` 
+
+
+```{r}
+numb = 9
+Hdata   <- sample(Homers_data$kkardashtemp ,size = numb*1000, replace=T)
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 9")
+Sample9mean<-mean(x.avg)
+Sample9sd<-sd(x.avg)
+```
+
+This graph has alot of sudden peaks, it looks like not all are the same. 
+l
