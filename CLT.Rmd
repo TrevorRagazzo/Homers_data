@@ -65,5 +65,47 @@ Sample9mean<-mean(x.avg)
 Sample9sd<-sd(x.avg)
 ```
 
-This graph has alot of sudden peaks, it looks like not all are the same. 
-l
+This graph has alot of sudden peaks, it looks like not all are the same. This is not a unimodal graph it is different but it looks closer to one. The mean of this graph is `r Sample9mean` and the standard deviation is `r Sample9sd`
+
+
+
+```{r}
+numb = 16
+Hdata   <- sample(Homers_data$kkardashtemp ,size = numb*1000, replace=T)
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 16")
+Sample16mean<-mean(x.avg)
+Sample16sd<-sd(x.avg)
+```
+
+This graph is almost unimodal but it has two small peaks at the top. The mean of this graph is `r Sample16mean` and the standard deviation is `r Sample16sd`
+
+```{r}
+numb = 25
+Hdata   <- sample(Homers_data$kkardashtemp ,size = numb*1000, replace=T)
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 25")
+Sample25mean<-mean(x.avg)
+Sample25sd<-sd(x.avg)
+```
+
+The mean of this graph is `r Sample25mean` and the standard deviation is `r Sample25sd` . We see this graph turning more and more a unimodal graph. This is a steady increase and is one big peak.
+
+
+
+```{r}
+numb = 36
+Hdata   <- sample(Homers_data$kkardashtemp ,size = numb*1000, replace=T)
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+densityplot(x.avg,main="sample size 36")
+Sample36mean<-mean(x.avg)
+Sample36sd<-sd(x.avg)
+```
+
+This is one big peak with small increases, but overall this is a unimodal. The mean of this graph is `r Sample36mean` and the standard deviation is `r Sample36sd`
+
+
+
